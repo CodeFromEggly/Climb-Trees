@@ -1,3 +1,7 @@
-Decimal Lat,Decimal Long,Name,Difficulty
-53.409722,-2.919722,Testree,T2
-53.407222,-2.941389,Testree 2,T3
+Decimal Lat,Decimal Long,Name,Difficulty
+
+53.409722,-2.919722,Testree,T2
+
+53.407222,-2.941389,Testree 2,T3
+
+53.832778,-0.451111,Westood Egg,T3
