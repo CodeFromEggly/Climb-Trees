@@ -2,6 +2,11 @@
 # This script will update the file 'tree_database.csv', based upon user input.
 
 # When ran, ask for: latitude, longitude, difficulty, name
+import csv
+
+
+
+
 
 print("Okay - Let's add a tree\n")
 
@@ -31,6 +36,29 @@ else :
 
 # Can now update the CSV file
 
-import csv
-
 filename = 'test_database.csv'
+f = open(filename,"a")
+tup1 = (latitude, longitude, name,  difficulty)
+writer = csv.writer(f)
+writer.writerow(tup1)
+
+f.close()
+
+"""
+new_tree = pd.DataFrame({'Decimal Lat': [latitude],
+    'Decimal Long': [longitude],
+    'Name': [name],
+    'Difficulty': [difficulty]})
+
+
+new_tree
+
+
+
+
+new_tree.to_csv(filename, mode='a', index=False, header=False)
+
+updated_database = pd.read_csv(filename)
+print(updated_database)
+
+"""
