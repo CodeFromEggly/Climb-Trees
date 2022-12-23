@@ -43,30 +43,46 @@
         <button>
                 <p>GPS</p>
         </button>
-        <button>
+        <button onclick="ipLocate()">
                 <p>Over Internet</p>
         </button>
   </form>
+  <div>
+    <h2>This is ur location details:</h2>
+    <p id="location"></p>
+
+  </div>
   <div id="GPS">
-        <script>
-                var x = document.getElementById("demo");
-                function getLocation() {
-                  if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                  } else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                  }
-                }
-                
-                function showPosition(position) {
-                  x.innerHTML = "Latitude: " + position.coords.latitude +
-                  "<br>Longitude: " + position.coords.longitude;
-                }
-                </script>
+        
+  </div>
+  <div id="ip">
+    <!-- Uses internet connection for location-->
+    <script>
+      function ipLocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(displayLocation);
+        } else {
+          // Geolocation is not supported by the browser
+          console.log("Geolocation is not supported by this browser.");
+        }
+
+        function displayLocation(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+          
+          // You can use the latitude and longitude values to display the user's location on a map, or to lookup the location name using a geocoding service
+          document.getElementById("location").innerHTML = "Latitude: " + latitude + ", Longitude: " + longitude;
+        }
+
+      }
+    </script>
+    <!-- 'navigator' is a property of 'window'-->
   </div>
   
 
 
 </div>
+
+
 
 {% endblock %}
