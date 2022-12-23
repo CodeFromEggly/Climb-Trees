@@ -34,18 +34,18 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/myLocation", methods=["GET", "POST"])
+@app.route("/location", methods=["GET", "POST"])
 def myLocation():
     # New conditions entered. Change .json and redirect to index
     if request.method == "POST":
-        """ This will execute when a POST (likely NavBar button or form) is submitted to the /myLocation route"""
+        """ This will execute when a POST (likely NavBar button or form) is submitted to the /location route"""
 
         return redirect("/")
     
     # Load conditions .html
     else:
         """ Show the user their location on a zoomed minimap"""
-        return render_template("myLocation.html")
+        return render_template("location.html")
 
 
 

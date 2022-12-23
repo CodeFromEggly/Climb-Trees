@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+
+
+{% block head %}
+        <title>Trees Near Me</title>
+
+        <head>
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+               integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+               crossorigin=""/>
+                <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+               integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+               crossorigin=""></script>
+        </head>
+{% endblock %}
+
+
+
+
+
+<!-- TODO: map gives coords use to generate what.three.words address using their api-->
+{% block main %}
+
+<h1 style="align-content: center"> Imagine a big map here centred on your location. Trees all about you.</h1>
+
+<div id="minimap">
+        <!-- Window to the minimap-->
+         
+  <body>
+    <div id="map" style="width: 600px; height: 400px;"></div>
+    <script>
+      var map = L.map('map').setView([51.505, -0.09], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18
+      }).addTo(map);
+    </script>
+  </body>
+
+  <!-- Choose between GPS location and internet location -->
+  <form>
+        <button>
+                <p>GPS</p>
+        </button>
+        <button>
+                <p>Over Internet</p>
+        </button>
+  </form>
+  <div id="GPS">
+        <script>
+                var x = document.getElementById("demo");
+                function getLocation() {
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                  } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                  }
+                }
+                
+                function showPosition(position) {
+                  x.innerHTML = "Latitude: " + position.coords.latitude +
+                  "<br>Longitude: " + position.coords.longitude;
+                }
+                </script>
+  </div>
+  
+
+
+</div>
+
+{% endblock %}
