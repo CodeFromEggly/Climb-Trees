@@ -33,7 +33,17 @@
                         </li>
                         <li class="nav-item">
                             <!-- An item that says 'Account' which, when hovered over, displays a pop-down with options either for sign in/create account, and sign out/account settings-->
-                        </li>
+                            <a id="products">Account</a>
+                            <ul id="product-list">
+                                {% if session['username'] %}
+                                <li class="nav-item">Logout</li>
+                                <li class="nav-item">Account Settings</li>
+                                {% else %}
+                                <li class="nav-item"><a href="/login">Login</a></li>
+                                <li class="nav-item"><a href="/register">Register</a></li>
+                                {% endif %}
+                            </ul>
+                        </li> 
                     </ul>
                 </div>
             </div>

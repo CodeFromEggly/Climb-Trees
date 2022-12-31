@@ -53,87 +53,26 @@
   </div>
 
   <h2> Planning proper layout:</h2>
-  <div> <!-- Contains map and taskbar-->
 
-    <div class="container text-center">
+  <div class="row">
+    <div class="col-3"></div>
 
-      <div class="row">
-        <div class="col-3"></div> <!-- ...centres the map... -->
-
-        <div  class="col-5 d-flex justify-content-center bg-success">
-          <div id="map" style="width: 600px; height: 400px;"></div> <!-- Map -->
-          <script src="/static/minimap.js"></script>          
-        </div>
-        
-        <div class="col-1 bg-info"> <!-- Taskbar -->
-          <div id="filters" class="navigation">
-            <ul>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T0</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T1</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T2</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"><img src="/static/TreeIcons/Tree Light Blue 3.png" class="icon"></span>
-                  <span class="text">T3</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T4</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T5</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T6</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T7</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T8</span>
-                </button>                
-              </li>
-              <li class="list">
-                <button>
-                  <span class="icon"></span>
-                  <span class="text">T9</span>
-                </button>                
-              </li>              
-            </ul>            
-          </div>
-        </div>
-      </div>
-
+    <div  class="col-5 mx-auto">
+      <div id="map" style="width: 600px; height: 400px;"></div> <!-- Map -->
+      <script src="/static/minimap.js"></script>          
     </div>
+
+    <div class="col-1 navigation" style="border-style: dashed;">
+      <ul>
+        {% for i in range(9) %}
+          <li class="list">
+            {{ i }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-3"></div>
   </div>
   
 
