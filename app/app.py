@@ -165,7 +165,7 @@ def register():
 
         
         # Ensure username doesn't exist already:
-        rows = db.execute("SELECT * FROM users WHERE username = ?", (username)).fetchall()
+        rows = db.execute("SELECT * FROM users WHERE username = ?", username).fetchall()
         rows = [dict(row) for row in rows]
         if len(rows) > 0: #TODO should it be 0?
             # TODO: error message
@@ -175,9 +175,12 @@ def register():
 
         # Create a new user in database:
         hashword = generate_password_hash(request.form.get("password"))
-        # TODO: Add a user entry in sql:
+
         print(f"inserting into users: {username} and {hashword}")
         db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", (username, hashword))
+        conn.commit()
+
+        conn.close()
 
         return redirect("/login")
 
