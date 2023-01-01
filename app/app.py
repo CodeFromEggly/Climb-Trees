@@ -97,17 +97,20 @@ def login():
             return redirect("/login")
 
         # Query database for username
-        all = db.execute("SELECT * FROM users WHERE username = ?", username).fetchall()
-        for row in all: row = dict(row)
+        all = db.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchall()
+        all = [dict(row) for row in all]
+        print(f"All is:::: {all}")
+
 
         # TODO Ensure username exists and password is correct
-        if len(row) != 1 or not check_password_hash(row[0]["hash"], password):
+        if len(all) != 1 or not check_password_hash(all[0]["hash"], password):
             print("invalid username and/or password")
             return redirect("/login")
 
         
         # Remember which user has logged in
-        #session["user_id"] = rows[0]["id"]
+        print(f"logigng in with ID: {all[0]['id']}")
+        session["user_id"] = all[0]["id"]
 
         # Redirect user to home page
         return redirect("/")
@@ -130,16 +133,18 @@ def logout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    #SQLite3 query to detect listings.
-    conn = sqlite3.connect('treeHub.db')
-    conn.row_factory = sqlite3.Row
-    db = conn.cursor()
-
-    # May as well clear the session
-    session.clear()
+    
 
     # Registration submitted via form:
     if request.method == "POST":
+
+        #SQLite3 query to detect listings.
+        conn = sqlite3.connect('treeHub.db')
+        conn.row_factory = sqlite3.Row
+        db = conn.cursor()
+
+        # May as well clear the session
+        session.clear()
         
         username = request.form.get("username")
         password = request.form.get("password")
@@ -165,7 +170,7 @@ def register():
 
         
         # Ensure username doesn't exist already:
-        rows = db.execute("SELECT * FROM users WHERE username = ?", username).fetchall()
+        rows = db.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchall()
         rows = [dict(row) for row in rows]
         if len(rows) > 0: #TODO should it be 0?
             # TODO: error message
