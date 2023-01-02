@@ -29,53 +29,27 @@
   
   
 </div>
-  <!-- Choose between GPS location and internet location -->
-  <form>
-        <button>
-                <p>GPS</p>
-        </button>
-        <button onclick="ipLocate()">
-                <p>Over Internet</p>
-        </button>
-  </form>
-  <div>
-    <h2>This is ur location details:</h2>
-    <p id="location"></p>
-
-  </div>
-  <div id="GPS">
-        
-  </div>
-  <div id="ip">
-    <!-- Uses internet connection for location-->
-    <script src="/static/ipLocate.js"> </script>
-    <!-- 'navigator' is a property of 'window'-->
-  </div>
-
+  
   <h2> Planning proper layout:</h2>
 
   <div class="row">
-    <div class="col-3"></div>
-
+    <div class="col-2"></div>
+    
     <div  class="col-5 mx-auto">
-      <div id="map" style="width: 600px; height: 400px;"></div> <!-- Map -->
+      <div id="map" style="width: 100%; height: 100%;"></div> <!-- Map -->
       <script src="/static/minimap.js"></script>          
     </div>
-
-    <div class="col-1 navigation" style="border-style: dashed;">
-      <ul>
-        {% for i in range(9) %}
-          <li class="list">
-            {{ i }}
-          </li>
+    
+    <!-- https://getbootstrap.com/docs/4.0/components/list-group/ -->
+    <div class="col-1 navigation" style="border-style: dashed; justify-content: left;">
+        {% for i in range(10) %}
+          <p style="border-style: dotted; border-color: aqua; text-align: center;">T{{ i }}</p>
         {% endfor %}
-      </ul>
     </div>
 
     <div class="col-3"></div>
   </div>
   
-
 
 
 

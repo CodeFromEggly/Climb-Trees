@@ -109,7 +109,7 @@ def login():
 
         
         # Remember which user has logged in
-        print(f"logigng in with ID: {all[0]['id']}")
+        print(f"logging in with ID: {all[0]['id']}")
         session["user_id"] = all[0]["id"]
 
         # Redirect user to home page
