@@ -10,6 +10,25 @@
     --clr: #222327;
 }
 
+/*login*/
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* background hp*/
+.bg-hp {background: url("https://images.alphacoders.com/693/693300.jpg");
+    height : 100vh;
+    background-size: cover;
+    background-position: center;
+}
+/* background login*/
+.bg {background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp");
+    height : 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
 /* NAV */
 
 nav {
@@ -19,29 +38,32 @@ nav {
     padding-top: 0.5%;
     padding-left: 10%;
     padding-right: 10%;
+    border-bottom: solid 1px black;
 }
+
 
 .tNavLink {
     color: var(--on-background-high);
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .tNavLink:hover {
-    color: var(--bright);
+    color: fuchsia;
 }
 
 .tNavLink.disabled {
     color: var(--on-background-med);
 }
 
-nav ul li {
-    list-style-type: none;
+/* spacing between icons padding*/
+.tNavItem {
     display: inline-block;
     padding: 5px 40px;
     text-align: center;
 }
 
-nav ul li a {
+/* Nav Links */
+.tNavLink {
     position: relative;
     text-decoration: none;
     display: flex;
@@ -51,38 +73,49 @@ nav ul li a {
     width: 100%;
     text-align: center;
     transition: 0.2s;
-    
 }
 
-nav ul li a .text {
+.tNavLink .text {
     position: absolute;
     opacity: 0;        
     transition: 0.2s;
 }
-
-nav ul li:hover a .text {
+/* xy location of text under icon */
+.tNavLink:hover .text {
     opacity: 1;
-    transform: translateY(15px);
+    transform: translateY(20px);
 }
 
-nav ul li a i {
+.tNavLink i {
     position: relative;
+    transition: 0.2s;
 }
 
-nav ul li:hover a i {
-    transform: translateY(-15px) !important;
+.tNavLink:hover i {
+    transform: translateY(-20px) !important;
 }
 
-nav ul li .active {
-    color: var(--brand) !important;
+.tNavList .active {
+    color: green!important;
 }
-
 
 #product-list li {
     display: inline-block;
     text-align: center;
 }
 
+/*size of icons*/
 i {
-    font-size: 24px;
+    font-size: 48px;
 }
+
+/* Lists */
+
+ul {
+    list-style-type: none;
+}
+
+
+
+
+

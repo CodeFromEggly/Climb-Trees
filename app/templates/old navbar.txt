@@ -1,0 +1,33 @@
+<!--
+        <nav class="navbar sticky-top navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="/static/tree-logo.png" alt="TreeHub" width="80" height="80"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><h2>Home</h2></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/location"><h2>Near Me</h2></a>
+                        </li>
+                        <li class="nav-item">
+                            <!- An item that says 'Account' which, when hovered over, displays a pop-down with options either for sign in/create account, and sign out/account settings ->
+                            <a id="products">Account</a>
+                            <ul id="product-list">
+                                {% if session['user_id'] %}
+                                <li class="nav-item"><a href="/logout">Logout</a></li>
+                                <li class="nav-item"><a href="/accountSettings">Account Settings</a></li>
+                                {% else %}
+                                <li class="nav-item"><a href="/login">Login</a></li>
+                                <li class="nav-item"><a href="/register">Register</a></li>
+                                {% endif %}
+                            </ul>
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    -->

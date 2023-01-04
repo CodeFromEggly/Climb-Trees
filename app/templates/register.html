@@ -20,4 +20,11 @@
             <h3>If registration is successful then you will be redirected to the login page!</h3>
         </div>
     </form>
+
+    <!-- If the user is being reidrected with an error message-->
+    {% if request.args.get('message') %}
+    <div class="alert alert-danger" role="alert">
+        {{ request.args.get('message') }}
+    </div>
+    {% endif %}
 {% endblock %}

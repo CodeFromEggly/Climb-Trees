@@ -9,7 +9,7 @@ from datetime import datetime
 
 from helpers import login_required
 
-from datetime import datetime
+import what3words
 
 
 
@@ -37,15 +37,29 @@ def after_request(response):
 @app.route("/")
 def index():
     """This is the homepage"""
-    
-    return render_template("index.html")
+    #SQLite3 query to detect listings.
+    conn = sqlite3.connect('treeHub.db')
+    conn.row_factory = sqlite3.Row
+    db = conn.cursor()
+
+    # Greet the user if they're logged-in
+    try :        
+        id = session['user_id']
+        user = db.execute("SELECT username FROM users WHERE id = ?", (id,)).fetchall()
+        user =  [dict(row) for row in user][0]['username']
+    except:
+        user = "climber"
+
+
+
+    return render_template("index.html", user=user)
 
 
 @app.route("/location", methods=["GET", "POST"])
 def location():
     # New conditions entered. Change .json and redirect to index
     if request.method == "POST":
-        """ This will execute when a POST (likely NavBar button or form) is submitted to the /location route"""
+        """ """
 
         return redirect("/")
     
@@ -65,21 +79,23 @@ def newTree():
         # Process form data:
 
         # Load submission
-        
-        try:
-            w3w = request.form.w3w('w3w')
-            
-        except:
+        w3w = request.form.get('w3w')
+        if w3w == '':
             latitude = request.form.get('latitude')
             longitude = request.form.get('longitude')
-            #TODO: get w3w code from API
+            #TODO:
             w3w = "API result"
+        else:
+            # Get coords from code using API
+            #TODO:
+            latitude = "API result"
+            longitude = "API result"
+            
+        
 
         grade = request.form.get('grade')
 
-        # Check submission
-
-
+        # TODO Check submission:
         
         # Add tree to database:
 
@@ -125,29 +141,24 @@ def login():
         password = request.form.get('password')
         # Ensure username was submitted
         if not request.form.get("username"):
-            # TODO error: return apology("must provide username", 403)
             print("no username")
-            return redirect("/login")
+            return redirect("/login?message=Please+provide+username")
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            # TODO error: return apology("must provide password", 403)
             print("no password")
-            return redirect("/login")
+            return redirect("/login?message=Please+provide+password")
 
         # Query database for username
         all = db.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchall()
         all = [dict(row) for row in all]
         print(f"All is:::: {all}")
 
-
-        # TODO Ensure username exists and password is correct
         if len(all) != 1 or not check_password_hash(all[0]["hash"], password):
             print("invalid username and/or password")
-            return redirect("/login")
+            return redirect("/login?message=Invalid+username+or+password")
 
-        
-        # Remember which user has logged in
+                # Remember which user has logged in
         print(f"logging in with ID: {all[0]['id']}")
         session["user_id"] = all[0]["id"]
 
@@ -192,30 +203,26 @@ def register():
 
         # Ensure username was submitted
         if not username:
-            #TODO: error message
             print("No Username")
-            return redirect("/register")
+            return redirect("/register?message=Please+provide+username")
 
         # Ensure password was submitted
         elif not password:
-            #TODO: error message
             print("no Password")
-            return redirect("/register")
+            return redirect("/register?message=Please+provide+password")
 
         # Ensure password confirmed
         elif not (confirmation == password):
-            #TODO: error message
             print("unconfirmed password")
-            return redirect("/register")
+            return redirect("/register?message=Passwords+don't+match")
 
         
         # Ensure username doesn't exist already:
         rows = db.execute("SELECT * FROM users WHERE username = ?", (username,)).fetchall()
         rows = [dict(row) for row in rows]
-        if len(rows) > 0: #TODO should it be 0?
-            # TODO: error message
+        if len(rows) > 0:
             print("username taken")
-            return redirect("/register")
+            return redirect("/register?message=Username+taken")
 
 
         # Create a new user in database:
