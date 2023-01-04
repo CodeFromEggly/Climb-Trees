@@ -56,12 +56,45 @@ def location():
 
 
 """ Requets for a tree creation (can be done from location.html for example) """
-@app.route("/createTree", methods=["GET", "POST"])
+@app.route("/newTree", methods=["GET", "POST"])
 @login_required
-def createTree():
+def newTree():
 
     if request.method == "POST":
+        
+        # Process form data:
 
+        # Load submission
+        id = request.form.get('id')
+        latitude = request.form.get('latitdue')
+        longitude = request.form.get('longitude')
+        w3w = request.form.w3w('id')
+        grade = request.form.get('grade')
+
+        # Check submission
+
+
+        
+        # Add tree to database:
+
+        #SQLite3 query to detect listings.
+        conn = sqlite3.connect('treeHub.db')
+        conn.row_factory = sqlite3.Row
+        db = conn.cursor()
+
+        # TODO: Check if there exists that tree already.
+
+        # INSERT NEW TREE
+        db.execute("INSERT INTO trees"
+        "(latitude, longitude, w3w, grade, planter)"
+        "VALUES (?,?,?,?,?)",(latitude, longitude, w3w, grade, session['user_id']))
+        conn.commit()
+
+
+
+
+
+        conn.close()
         return redirect("/")
     
     else:
@@ -74,13 +107,13 @@ def login():
 
     # Forget any user_id
     session.clear()
-    #SQLite3 query to detect listings.
-    conn = sqlite3.connect('treeHub.db')
-    conn.row_factory = sqlite3.Row
-    db = conn.cursor()
-
+    
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
+        #SQLite3 query to detect listings.
+        conn = sqlite3.connect('treeHub.db')
+        conn.row_factory = sqlite3.Row
+        db = conn.cursor()
 
         username = request.form.get('username')
         password = request.form.get('password')
@@ -112,6 +145,7 @@ def login():
         print(f"logging in with ID: {all[0]['id']}")
         session["user_id"] = all[0]["id"]
 
+        conn.close()
         # Redirect user to home page
         return redirect("/")
 
@@ -193,6 +227,8 @@ def register():
     else:
         # They want to register
         return render_template("register.html")
+
+
 
 if __name__ == "__main__":
     app.run()
