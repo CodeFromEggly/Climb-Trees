@@ -17,5 +17,5 @@ CREATE TABLE trees (
     latitude TEXT NOT NULL,
     longitude TEXT NOT NULL,
     w3w TEXT NOT NULL,
-    grade INTEGER DEFAULT NULL
+    grade INTEGER DEFAULT NULL,
     planter TEXT NOT NULL);

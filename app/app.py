@@ -65,10 +65,16 @@ def newTree():
         # Process form data:
 
         # Load submission
-        id = request.form.get('id')
-        latitude = request.form.get('latitdue')
-        longitude = request.form.get('longitude')
-        w3w = request.form.w3w('id')
+        
+        try:
+            w3w = request.form.w3w('w3w')
+            
+        except:
+            latitude = request.form.get('latitude')
+            longitude = request.form.get('longitude')
+            #TODO: get w3w code from API
+            w3w = "API result"
+
         grade = request.form.get('grade')
 
         # Check submission
