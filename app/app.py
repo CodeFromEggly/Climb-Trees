@@ -51,7 +51,7 @@ def index():
         user = "climber"
 
 
-
+    conn.close()
     return render_template("index.html", user=user)
 
 
@@ -66,7 +66,21 @@ def location():
     # Load conditions .html
     else:
         """ Show the user their location on a zoomed minimap"""
-        return render_template("location.html")
+
+        # Plot tree locations:
+        conn = sqlite3.connect('treeHub.db')
+        conn.row_factory = sqlite3.Row
+        db = conn.cursor()
+
+        trees = db.execute("SELECT * FROM trees").fetchall()
+        trees = [dict(row) for row in trees]
+
+
+
+
+        from APIkeys import gmaps
+        conn.close()
+        return render_template("location.html",API=gmaps, trees=trees)
 
 
 """ Requets for a tree creation (can be done from location.html for example) """

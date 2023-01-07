@@ -10,6 +10,67 @@
     --clr: #222327;
 }
 
+.spring {
+    --primary:          #f68f3c;
+    --secondary:        #ee6f68;
+    --tertiary:         #5e8d5a;
+    --bg-coloured:      #c6d7b9;
+
+    /*
+        #c6d7b9	(198,215,185)   PALE GREEN
+        #f6b9ad	(246,185,173)   PALE PINK
+        #ee6f68	(238,111,104)   PEACH
+        #f68f3c	(246,143,60)    ORANGE
+        #5e8d5a	(94,141,90)     GREEN
+    */
+}
+
+.summer {
+    --primary:          #F03613;
+    --secondary:        #EDC02C;
+    --tertiary:         #27B46E;
+    --bg-coloured:      #F3E2B3;
+
+    /*
+        #F03613     RED
+        #EDC02C     YELLOW
+        #27B46E     MINT
+        #A2EEEB     PALE BLUE
+        #F3E2B3     BEIGE
+    */
+}
+
+.autumn {
+    --primary:          #CC5543;
+    --secondary:        #EDB579;
+    --tertiary:         #455C4F;
+    --bg-coloured:      #DBE6AF;
+
+    /* 
+        #6D7696;    GREY BLUE
+        #59484F;    DARK GREY
+        #455C4F;    DARK GREEN
+        #CC5543;    RED
+        #EDB579;    PALE ORANGE
+        #DBE6AF;    PALE GREEN
+    */
+}
+
+.winter {
+    --primary:          #231e05;
+    --secondary:        #80785e;
+    --tertiary:         #8b1d1a;
+    --bg-coloured:      #d7b588;
+
+    /*
+        #231e05     DARK GREEN
+        #80785e     PALE GREEN
+        #d7b588     BEIGE
+        #8b1d1a     RED
+        #1c0205     PURPLE
+    */
+}
+
 /*login*/
 .container-fluid {
     display: flex;
@@ -41,18 +102,21 @@ nav {
     border-bottom: solid 1px black;
 }
 
+.tNavList .active {
+    color: var(--tertiary) !important;
+}
 
 .tNavLink {
-    color: var(--on-background-high);
     transition: 0.3s;
+    color: var(--secondary);
 }
 
 .tNavLink:hover {
-    color: fuchsia;
+    color: var(--primary);
 }
 
 .tNavLink.disabled {
-    color: var(--on-background-med);
+    color:var(--bg-coloured);
 }
 
 /* spacing between icons padding*/
@@ -80,6 +144,7 @@ nav {
     opacity: 0;        
     transition: 0.2s;
 }
+
 /* xy location of text under icon */
 .tNavLink:hover .text {
     opacity: 1;
@@ -93,10 +158,6 @@ nav {
 
 .tNavLink:hover i {
     transform: translateY(-20px) !important;
-}
-
-.tNavList .active {
-    color: green!important;
 }
 
 #product-list li {

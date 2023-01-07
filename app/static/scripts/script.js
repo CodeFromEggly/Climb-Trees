@@ -22,3 +22,32 @@
     }
 
     document.getElementById(activePage).classList.add('active');
+      
+// UPDATE SEASON
+function updateSeason() {
+    var currentMonth = (new Date()).getMonth();
+    var body = document.querySelector('body');
+    var season;
+  
+    if (currentMonth >= 2 && currentMonth <= 4) {
+        season = 'spring';
+        body.className = season;
+    } else if (currentMonth >= 5 && currentMonth <= 7) {
+        season = 'summer';
+        body.className = season;
+    } else if (currentMonth >= 8 && currentMonth <= 10) {
+        season = 'autumn';
+        body.className = season;
+    } else {
+        season = 'winter';
+        body.className = season;
+    }
+}
+
+updateSeason();
+
+// LOCATION SCRIPTS
+    if (activePage === 'location'){};
+
+// NEW TREE SCRIPTS    
+    if (activePage === 'newTree'){};

@@ -12,6 +12,8 @@
                 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
                crossorigin=""></script>
+               <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> <!-- GMAPS docs had it-->
+
         </head>
 {% endblock %}
 
@@ -24,21 +26,30 @@
 
 <h1 style="align-content: center"> Imagine a big map here centred on your location. Trees all about you.</h1>
 
-<div id="minimap">
-        <!-- Window to the minimap-->
-  
-  
-</div>
   
   <h2> Planning proper layout:</h2>
+  
 
   <div class="row">
     <div class="col-2"></div>
     
+    <!-- Displays map on page: -->
     <div  class="col-5 mx-auto">
-      <div id="map" style="width: 100%; height: 100%;"></div> <!-- Map -->
-      <script src="/static/minimap.js"></script>          
+      <div id="map" style="height: 100%; width:100%;"></div> <!-- Map -->
+
+      <!-- Tree locations converted from Flask (Python) to json: -->
+      <p id="test"> THIS TEXT IS REPLACED </p>
+      <script>var trees = JSON.parse('{{ trees | tojson}}');</script>
+      <script>
+        
+      </script>
+      <!-- Load map: -->
+      <script src="/static/minimap.js"></script>      
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key={{API}}&callback=initMap">
+      </script>         
     </div>
+
     
     <!-- https://getbootstrap.com/docs/4.0/components/list-group/ -->
     <div class="col-1 navigation" style="border-style: dashed; justify-content: left;">
