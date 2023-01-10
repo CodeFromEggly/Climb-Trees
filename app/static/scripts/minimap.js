@@ -1,26 +1,26 @@
 
-// Tests functionality using <p id="test"> in lcoation.html
+// Tests functionality using <p id="test"> in location.html
 var x = document.getElementById("test");
-x.innerHTML="Whatever text!";
-x.innerHTML = `${trees[0]['latitude']} Lat and ${trees[0]['longitude']} Lng`;
+x.innerHTML="Testing: ";
 
-// TODO Obtain list of markers for trees:
+// TODO Process trees into a list called markers:
 markers = []
 
-for (let i = 0; i < 10; i++) {
-  var newTree = {
-    lat:trees[i].latitude,
-    lng:trees[i].long,
-    id:trees[i].id
-  }
-  markers.push(newTree)
+// Add each tree as a new marker to markers
+let jinjatrees = trees
+for (let tree of jinjatrees) {
+  // Convert latitude and longitude into coords object {lat:x, lng: y}
+  var coords = {lat:tree.latitude, lng:tree.longitude};
+  var newMarker = {
+    position: coords,
+    id: tree.id,
+    grade: tree.grade,
+    planter: tree.planter
+  };
+  markers.push(newMarker);
 }
-// TODO fill out tree database for further developing
-markers.forEach(function(marker) {
-  x.innerHTML += marker.lat;
-});
 
-
+x.innerHTML += markers[0].position;
 
 
 // Create the map
@@ -28,17 +28,21 @@ function initMap(){
   // Set options for the map
   var options = {
     zoom:4,
-    center:{lat:-25.363, lng:131.844}
+    // TODO centre on device location (google has an API for this)
+    center:{lat:53.6490, lng:-1.7842}
   }
 
   var map = new
   google.maps.Map(document.getElementById('map'), options);
 
-  // Add ONE marker:
-  new google.maps.Marker({
-    position: {lat:trees[0]['latitude'], lng:trees[0]['longitude']},
-    map,
-    title: "Hello World!",
-  });
+  // Loop through markers adding each one
+  for (let i = 0, len = markers.length; i < len; i++) {
+    new google.maps.Marker({
+      position: markers[i].position,
+      map,
+      // TODO information like grade and who 'planted' it
+      title: "Hello World!"
+    });
+  }
 }
 
