@@ -9,13 +9,18 @@ markers = []
 
 for (let i = 0; i < 10; i++) {
   var newTree = {
-    lat:trees[i]['latitude'],
-    lng:trees[i]['longitude'],
-    id:trees[i]['id']
+    lat:trees[i].latitude,
+    lng:trees[i].long,
+    id:trees[i].id
   }
   markers.push(newTree)
 }
 // TODO fill out tree database for further developing
+markers.forEach(function(marker) {
+  x.innerHTML += marker.lat;
+});
+
+
 
 
 
@@ -30,4 +35,14 @@ function initMap(){
 }
 
 
+// create marker function where 'options' = {coords:{lat:-x, lng:+y} icons:''}
+function newMarker(options){
+  var marker = new google.maps.marker({
+    position:options.coords,
+    map:map,
+    icon:options.grade
+  });
+}
 
+
+newMarker({coords:{lat:42.4668, lng:-70.9495}, icon:'https://github.com/CodeFromEggly/TreeHub/blob/main/TreeIcons/Tree%20Light%20Blue%203.png?raw=true'})
