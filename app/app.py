@@ -98,12 +98,12 @@ def newTree():
             latitude = request.form.get('latitude')
             longitude = request.form.get('longitude')
             #TODO:
-            w3w = "API result"
+            w3w = "no.result.yet"
         else:
             # Get coords from code using API
             #TODO:
-            latitude = "API result"
-            longitude = "API result"
+            latitude = 0
+            longitude = 0
             
         
 
@@ -119,6 +119,11 @@ def newTree():
         db = conn.cursor()
 
         # TODO: Check if there exists that tree already.
+
+        # Table takes numeric entries:
+        latitude = float(latitude)
+        longitude= float(longitude)
+        grade = int(grade)
 
         # INSERT NEW TREE
         db.execute("INSERT INTO trees"
@@ -159,7 +164,7 @@ def login():
             return redirect("/login?message=Please+provide+username")
 
         # Ensure password was submitted
-        elif not request.form.get("password"):
+        if not request.form.get("password"):
             print("no password")
             return redirect("/login?message=Please+provide+password")
 

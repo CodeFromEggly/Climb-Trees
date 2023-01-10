@@ -23,8 +23,9 @@ markers.forEach(function(marker) {
 
 
 
-
+// Create the map
 function initMap(){
+  // Set options for the map
   var options = {
     zoom:4,
     center:{lat:-25.363, lng:131.844}
@@ -32,17 +33,12 @@ function initMap(){
 
   var map = new
   google.maps.Map(document.getElementById('map'), options);
-}
 
-
-// create marker function where 'options' = {coords:{lat:-x, lng:+y} icons:''}
-function newMarker(options){
-  var marker = new google.maps.marker({
-    position:options.coords,
-    map:map,
-    icon:options.grade
+  // Add ONE marker:
+  new google.maps.Marker({
+    position: {lat:trees[0]['latitude'], lng:trees[0]['longitude']},
+    map,
+    title: "Hello World!",
   });
 }
 
-
-newMarker({coords:{lat:42.4668, lng:-70.9495}, icon:'https://github.com/CodeFromEggly/TreeHub/blob/main/TreeIcons/Tree%20Light%20Blue%203.png?raw=true'})
