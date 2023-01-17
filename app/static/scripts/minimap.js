@@ -27,18 +27,24 @@ x.innerHTML += markers[0].position;
 function initMap(){
   // Set options for the map
   var options = {
+    center:{lat:53.6490, lng:-1.7842},
     zoom:4,
     // TODO centre on device location (google has an API for this)
-    center:{lat:53.6490, lng:-1.7842}
-  }
+    // Sets map type to Hybrid by default
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  };
 
   var map = new
   google.maps.Map(document.getElementById('map'), options);
-
+ 
   // Loop through markers adding each one
   for (let i = 0, len = markers.length; i < len; i++) {
     new google.maps.Marker({
       position: markers[i].position,
+      //Sets pins to drop onto screen animation
+      animation:google.maps.Animation.DROP,
+      //sets icon displayed maybe a check for diffrent grades
+      icon: "https://img.icons8.com/external-flat-icons-inmotus-design/67/null/external-Tree-geo-points-flat-icons-inmotus-design.png",
       map,
       // TODO information like grade and who 'planted' it
       title: "Hello World!"
