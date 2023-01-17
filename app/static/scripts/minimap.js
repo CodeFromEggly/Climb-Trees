@@ -44,7 +44,7 @@ function initMap(){
       //Sets pins to drop onto screen animation
       animation:google.maps.Animation.DROP,
       //sets icon displayed maybe a check for diffrent grades
-      icon: "https://img.icons8.com/external-flat-icons-inmotus-design/67/null/external-Tree-geo-points-flat-icons-inmotus-design.png",
+      icon: "https://github.com/CodeFromEggly/TreeHub/blob/main/TreeIcons/Tree%20Black%203.png?raw=true",
       map,
       // TODO information like grade and who 'planted' it
       title: "Hello World!"
