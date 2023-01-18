@@ -43,8 +43,8 @@ function initMap(){
       position: markers[i].position,
       //Sets pins to drop onto screen animation
       animation:google.maps.Animation.DROP,
-      //sets icon displayed maybe a check for diffrent grades
-      icon: "https://raw.githubusercontent.com/CodeFromEggly/TreeHub/Flask-branch/app/static/TreeIcons/Tree%20Black%209%2060%2040.png",
+      // Icon set to "'PATH/tree' + '(GRADE)' + '.png'"
+      icon: "static/TreeIcons/tree".concat(markers[i].grade,".png"),
       map,
       // TODO information like grade and who 'planted' it
       title: "Hello World!"
