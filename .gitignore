@@ -1,3 +1,4 @@
 
 app/static/APIkeys.js
 app/APIkeys.py
+*.pyc
