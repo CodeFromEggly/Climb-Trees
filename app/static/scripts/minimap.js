@@ -3,10 +3,10 @@
 var x = document.getElementById("test");
 x.innerHTML="Testing: ";
 
-// TODO Process trees into a list called markers:
-markers = []
+// TODO Process trees into a list called treeList:
+treeList = []
 
-// Add each tree as a new marker to markers
+// Add each tree as a new marker to treeList
 let jinjatrees = trees
 for (let tree of jinjatrees) {
   // Convert latitude and longitude into coords object {lat:x, lng: y}
@@ -17,10 +17,9 @@ for (let tree of jinjatrees) {
     grade: tree.grade,
     planter: tree.planter
   };
-  markers.push(newMarker);
+  treeList.push(newMarker);
 }
 
-x.innerHTML += markers[0].position;
 
 
 // Create the map
@@ -37,18 +36,36 @@ function initMap(){
   var map = new
   google.maps.Map(document.getElementById('map'), options);
  
-  // Loop through markers adding each one
-  for (let i = 0, len = markers.length; i < len; i++) {
+
+  const markers = treeList.coords.map((position, i) => {
+    const marker = new google.maps.Marker({
+      position
+    });
+
+    // markers can only be keyboard focusable when they have click listeners
+    // open info window when marker is clicked
+    marker.addListener("click", () => {
+      infoWindow.open(map, marker);
+    });
+    return marker;
+  });
+
+  new MarkerClusterer({ markers, map });
+
+  // Loop through treeList adding each one
+  for (let i = 0, len = treeList.length; i < len; i++) {
     new google.maps.Marker({
-      position: markers[i].position,
+      position: treeList[i].position,
       //Sets pins to drop onto screen animation
       animation:google.maps.Animation.DROP,
-      // Icon set to "'PATH/tree' + '(GRADE)' + '.png'"
-      icon: "static/TreeIcons/tree".concat(markers[i].grade,".png"),
+      // Icon set to "'PATH/tree' + '(GRADE)' + '.png'".   Doesn't seem to be case-sensitive
+      icon: "static/TreeIcons/tree".concat(treeList[i].grade,".png"),
       map,
       // TODO information like grade and who 'planted' it
       title: "Hello World!"
     });
+
   }
+
 }
 
