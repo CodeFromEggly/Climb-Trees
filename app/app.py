@@ -80,7 +80,7 @@ def location():
 
         from APIkeys import gmaps
         conn.close()
-        return render_template("location.html",API=gmaps, trees=trees)
+        return render_template("location.html",API=gmaps, jinjatrees=trees)
 
 
 """ Requets for a tree creation (can be done from location.html for example) """

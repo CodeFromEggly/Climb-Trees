@@ -39,7 +39,7 @@
 
       <!-- Tree locations converted from Flask (Python) to json: -->
       <p id="test"> IF YOU CAN SEE THIS THEN minimap.js ISNT WORKING </p>
-      <script>var trees = JSON.parse('{{ trees | tojson}}');</script>
+      <script>var jinjatrees = JSON.parse('{{ jinjatrees | tojson}}');</script>
       <!-- Load map: -->
       <script src="/static/scripts/minimap.js"></script>
       <script async defer
