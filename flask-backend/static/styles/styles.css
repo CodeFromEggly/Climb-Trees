@@ -1,0 +1,182 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --clr: #222327;
+}
+
+.spring {
+    --primary:          #f68f3c;
+    --secondary:        #ee6f68;
+    --tertiary:         #5e8d5a;
+    --bg-coloured:      #c6d7b9;
+
+    /*
+        #c6d7b9	(198,215,185)   PALE GREEN
+        #f6b9ad	(246,185,173)   PALE PINK
+        #ee6f68	(238,111,104)   PEACH
+        #f68f3c	(246,143,60)    ORANGE
+        #5e8d5a	(94,141,90)     GREEN
+    */
+}
+
+.summer {
+    --primary:          #F03613;
+    --secondary:        #EDC02C;
+    --tertiary:         #27B46E;
+    --bg-coloured:      #F3E2B3;
+
+    /*
+        #F03613     RED
+        #EDC02C     YELLOW
+        #27B46E     MINT
+        #A2EEEB     PALE BLUE
+        #F3E2B3     BEIGE
+    */
+}
+
+.autumn {
+    --primary:          #CC5543;
+    --secondary:        #EDB579;
+    --tertiary:         #455C4F;
+    --bg-coloured:      #DBE6AF;
+
+    /* 
+        #6D7696;    GREY BLUE
+        #59484F;    DARK GREY
+        #455C4F;    DARK GREEN
+        #CC5543;    RED
+        #EDB579;    PALE ORANGE
+        #DBE6AF;    PALE GREEN
+    */
+}
+
+.winter {
+    --primary:          #231e05;
+    --secondary:        #80785e;
+    --tertiary:         #8b1d1a;
+    --bg-coloured:      #d7b588;
+
+    /*
+        #231e05     DARK GREEN
+        #80785e     PALE GREEN
+        #d7b588     BEIGE
+        #8b1d1a     RED
+        #1c0205     PURPLE
+    */
+}
+
+/*login*/
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* background hp*/
+.bg-hp {background: url("https://images.alphacoders.com/693/693300.jpg");
+    height : 100vh;
+    background-size: cover;
+    background-position: center;
+}
+/* background login*/
+.bg {background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp");
+    height : 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+/* NAV */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-bottom: solid 1px black;
+}
+
+.tNavList .active {
+    color: var(--tertiary) !important;
+}
+
+.tNavLink {
+    transition: 0.3s;
+    color: var(--secondary);
+}
+
+.tNavLink:hover {
+    color: var(--primary);
+}
+
+.tNavLink.disabled {
+    color:var(--bg-coloured);
+}
+
+/* spacing between icons padding*/
+.tNavItem {
+    display: inline-block;
+    padding: 5px 40px;
+    text-align: center;
+}
+
+/* Nav Links */
+.tNavLink {
+    position: relative;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.tNavLink .text {
+    position: absolute;
+    opacity: 0;        
+    transition: 0.2s;
+}
+
+/* xy location of text under icon */
+.tNavLink:hover .text {
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.tNavLink i {
+    position: relative;
+    transition: 0.2s;
+}
+
+.tNavLink:hover i {
+    transform: translateY(-20px) !important;
+}
+
+#product-list li {
+    display: inline-block;
+    text-align: center;
+}
+
+/*size of icons*/
+i {
+    font-size: 48px;
+}
+
+/* Lists */
+
+ul {
+    list-style-type: none;
+}
+
+
+
+
+
