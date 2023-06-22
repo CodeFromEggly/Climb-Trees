@@ -1,21 +1,10 @@
-# TreeHub
+# WIP - CLimbTrees
 
 We  like to climb the trees
 
+This intention of this project is to develop an online database of trees in the UK that are good to climb.
+There will be a rating system of climbing difficulty such as there is in rock climbing.
+Users will be able to place a tree's location on a mpa using GPS. There will be functionality for pictures of trees and in the future photogrammetry for displaying 3D models. The user can edit these photos to show their route up the tree, and assign it a grade.
 
+Currently the project uses a Flask backend and uses Jinja to template frontend. This is going to be changed to Node and React.
 
-possible stuff to do:
-+ Tree location
-:   automatically lookup what three words location based on coordinates
-:   https://developer.what3words.com/tutorial/python#get-an-api-key     
-
-+ Filter for map
-:   show only certain ranks etc
-
-+ photos of trees
-:   can have them in 'popup' in folium icon
-:   can store tree images here on GitHub so far
-:   use polycam to scan in trees
-
-+ newTree function which updates the .CSV
-: in form 'python newTree add' / 'python newTree remove'
